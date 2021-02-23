@@ -19,12 +19,12 @@ function renderApp()
     global $params;
     $url = splitURL();
 
-    if (file_exists('controllers/' . strtolower($url[0]) . 'Controller.php')) {
+    if (file_exists(CONTROLLERS . strtolower($url[0]) . 'Controller.php')) {
         $controller = strtolower($url[0]);
         unset($url[0]);
     }
 
-    require 'controllers/' . $controller . 'Controller.php';
+    require CONTROLLERS . $controller . 'Controller.php';
 
     if (isset($url[1])) {
         if (function_exists(strtolower($url[1]))) {
@@ -36,4 +36,21 @@ function renderApp()
     //run the method with array params
     $params = array_values($url);
     call_user_func_array($method, $params);
+}
+
+
+function view($view)
+{
+    if (file_exists(VIEWS . $view . '/' . $view . '.php')) {
+        include VIEWS . $view . '/' . $view . '.php';
+    } else {
+        include VIEWS . 'error/error.php';
+    }
+}
+
+function model($model)
+{
+    if (file_exists(MODELS . $model . '.php')) {
+        include MODELS . $model . '.php';
+    }
 }
