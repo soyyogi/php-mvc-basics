@@ -1,6 +1,16 @@
 <?php
 
-require_once MODELS . "employeeModel.php";
+model('employee');
+
+function index(...$params) {
+    if(isset($_GET['id'])) {
+        $employee = getEmployee($_GET['id']);
+        view('employee');
+    } else {
+        $allEmployees = getAllEmployees();
+        include VIEWS . 'employee/employeeDashboard.php';
+    }
+}
 
 //OBTAIN THE ACCION PASSED IN THE URL AND EXECUTE IT AS A FUNCTION
 
@@ -15,15 +25,15 @@ require_once MODELS . "employeeModel.php";
  */
 function getAllEmployees()
 {
-    //
+    return get();
 }
 
 /**
  * This function calls the corresponding model function and includes the corresponding view
  */
-function getEmployee($request)
+function getEmployee($id)
 {
-    //
+    return getById($id);
 }
 
 /**
@@ -31,5 +41,5 @@ function getEmployee($request)
  */
 function error($errorMsg)
 {
-    require_once VIEWS . "/error/error.php";
+    view('error');
 }

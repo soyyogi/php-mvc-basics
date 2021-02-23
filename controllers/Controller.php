@@ -30,6 +30,8 @@ function renderApp()
         if (function_exists(strtolower($url[1]))) {
             $method = $url[1];
             unset($url[1]);
+        } else {
+            $method = 'error';
         }
     }
 
@@ -50,7 +52,7 @@ function view($view)
 
 function model($model)
 {
-    if (file_exists(MODELS . $model . '.php')) {
-        include MODELS . $model . '.php';
+    if (file_exists(MODELS . $model . 'Model.php')) {
+        include MODELS . $model . 'Model.php';
     }
 }
