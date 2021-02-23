@@ -19,12 +19,12 @@ function renderApp()
     global $params;
     $url = splitURL();
 
-    if (file_exists(strtolower($url[0]) . 'Controller.php')) {
+    if (file_exists('controllers/' . strtolower($url[0]) . 'Controller.php')) {
         $controller = strtolower($url[0]);
         unset($url[0]);
     }
 
-    require $controller . 'Controller.php';
+    require 'controllers/' . $controller . 'Controller.php';
 
     if (isset($url[1])) {
         if (function_exists(strtolower($url[1]))) {
