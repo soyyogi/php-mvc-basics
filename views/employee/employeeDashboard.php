@@ -11,8 +11,7 @@
 
 echo 'This is employeeDashboard view.';
 
-isset($allEmployees) ? show($allEmployees) : '';
-
+isset($allEmployees) ? show($allEmployees) : show('Employees data not found!');
 
 ?>
     

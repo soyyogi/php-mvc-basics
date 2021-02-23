@@ -1,11 +1,11 @@
 <?php
 
-model('employee');
+include MODELS . 'employeeModel.php';
 
 function index(...$params) {
     if(isset($_GET['id'])) {
         $employee = getEmployee($_GET['id']);
-        view('employee');
+        include VIEWS . 'employee/employee.php';
     } else {
         $allEmployees = getAllEmployees();
         include VIEWS . 'employee/employeeDashboard.php';
@@ -39,7 +39,7 @@ function getEmployee($id)
 /**
  * This function includes the error view with a message
  */
-function error($errorMsg)
-{
-    view('error');
-}
+// function error($errorMsg)
+// {
+    
+// }

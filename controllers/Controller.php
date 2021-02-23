@@ -30,29 +30,10 @@ function renderApp()
         if (function_exists(strtolower($url[1]))) {
             $method = $url[1];
             unset($url[1]);
-        } else {
-            $method = 'error';
         }
     }
 
     //run the method with array params
     $params = array_values($url);
     call_user_func_array($method, $params);
-}
-
-
-function view($view)
-{
-    if (file_exists(VIEWS . $view . '/' . $view . '.php')) {
-        include VIEWS . $view . '/' . $view . '.php';
-    } else {
-        include VIEWS . 'error/error.php';
-    }
-}
-
-function model($model)
-{
-    if (file_exists(MODELS . $model . 'Model.php')) {
-        include MODELS . $model . 'Model.php';
-    }
 }

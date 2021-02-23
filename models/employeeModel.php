@@ -27,6 +27,24 @@ function get()
 
 function getById($id)
 {
-    $data = 'Add employee data from database';
+    $con = mysqli_connect('localhost', 'yogi', 'archdb', 'employees', 3306, '/run/mysqld/mysqld.sock');
+
+    // Check connection
+    if (mysqli_connect_errno()) {
+        echo 'Failed to connect to MySQL: ' . mysqli_connect_error();
+        exit();
+    }
+
+    $sql = 'SELECT first_name, last_name, gender, hire_date FROM employees WHERE emp_no = ' . $id;
+    $result = mysqli_query($con, $sql);
+
+    // Fetch all
+    $data = mysqli_fetch_assoc($result);
+    
+    // Free result set
+    mysqli_free_result($result);
+
+    mysqli_close($con);
+  
     return $data;
 }
