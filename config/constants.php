@@ -1,5 +1,8 @@
 <?php
 
+//Base Path
+define("BASE_PATH", dirname(__FILE__, 2));
+
 //CONTROLLERS
 define("CONTROLLERS", BASE_PATH . '/controllers/');
 
