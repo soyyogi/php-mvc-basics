@@ -1,5 +1,5 @@
 <?php
 
 function index(...$params) {
-    view('main');
+    include VIEWS . 'main/main.php';
 }

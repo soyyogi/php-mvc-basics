@@ -12,6 +12,12 @@ function index(...$params) {
     }
 }
 
+function add(...$params) {
+    $addEmployee = true;
+    include VIEWS . 'employee/employee.php';
+}
+
+
 //OBTAIN THE ACCION PASSED IN THE URL AND EXECUTE IT AS A FUNCTION
 
 //Keep in mind that the function to be executed has to be one of the ones declared in this controller
