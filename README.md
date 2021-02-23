@@ -1,0 +1,1 @@
+This is a basic MVC boiler plate for PHP implemented using functional programming.
